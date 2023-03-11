@@ -486,5 +486,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # setting
-.settings/
+.settings
 
