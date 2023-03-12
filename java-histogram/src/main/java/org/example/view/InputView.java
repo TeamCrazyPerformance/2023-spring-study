@@ -24,7 +24,7 @@ public class InputView {
     int n = -1;
     System.out.println("데이터의 개수를 입력해주세요.");
     n = Integer.parseInt(br.readLine());
-    if(n<0) throw new IOException("데이터의 개수는 음일 수 없습니다.");
+    if(n<0) throw new IOException("데이터의 개수는 음수일 수 없습니다.");
     return n;
   }
 
