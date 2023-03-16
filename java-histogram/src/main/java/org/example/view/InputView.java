@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.example.domain.DataInfo;
 import org.example.domain.Histogram;
 
 /**
@@ -18,34 +20,34 @@ public class InputView {
     br = new BufferedReader(new InputStreamReader(System.in));
   }
 
-  public int inputNByUser() {
+  public int inputNByUser() throws IOException {
     int n = -1;
-    try {
-      System.out.println("데이터의 개수를 입력해주세요.");
-      n = Integer.parseInt(br.readLine());
-      if(n<0) throw new Exception("데이터의 개수는 음일 수 없습니.");
-    } catch (Exception e) {
-      System.out.println("[ERROR] " + e.getMessage());
-      e.printStackTrace();
-    }
+    System.out.println("데이터의 개수를 입력해주세요.");
+    n = Integer.parseInt(br.readLine());
+    if(n<0) throw new IOException("데이터의 개수는 음수일 수 없습니다.");
     return n;
   }
 
-  public List<Histogram> inputHistByUser(int n) {
-    List<Histogram> hist = new ArrayList<Histogram>();
-    try {
-      System.out.println("각 데이터의 양을 입력해주세요.");
-      while(n-- != 0) {
-        hist.add(new Histogram(Integer.parseInt(br.readLine())));
+  public Histogram inputHistByUser(int n) throws IOException {
+    Histogram histogram;
+    System.out.println("각 데이터의 양을 입력해주세요.");
+    histogram = new Histogram(Stream.generate(()-> {
+      try {
+        return Integer.parseInt(br.readLine());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
       }
-    } catch(IOException ioe) {
-      ioe.printStackTrace();
-    }
-    return hist;
+    }).map(DataInfo::new).limit(n).collect(Collectors.toList()));
+    return histogram;
   }
 
-  public List<Histogram> inputByUser() {
-    return inputHistByUser(inputNByUser());
+  public Histogram inputByUser() {
+    try {
+      return inputHistByUser(inputNByUser());
+    } catch (IOException ioe) {
+      System.out.println(ioe.getMessage());
+    }
+    return new Histogram(new ArrayList<>());
   }
 
 }

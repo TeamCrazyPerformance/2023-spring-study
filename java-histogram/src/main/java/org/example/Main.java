@@ -8,11 +8,11 @@ import org.example.view.OutputView;
 
 public class Main {
   public static void main(String[] args) {
-    List<Histogram> hist;
+    Histogram histogram;
     final InputView inputView = new InputView();
     final OutputView outputView = new OutputView();
 
-    hist = inputView.inputByUser();
-    outputView.printHist(hist);
+    histogram = inputView.inputByUser();
+    outputView.printHist(histogram);
   }
 }
