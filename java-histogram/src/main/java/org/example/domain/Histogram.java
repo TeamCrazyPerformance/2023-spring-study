@@ -1,10 +1,6 @@
 package org.example.domain;
 
 import java.util.ArrayList;
-
-/**
- * 히스토그램 도메인 클래스
- */
 public class Histogram {
     public static String makeHistogram(int value) {
         StringBuilder sb = new StringBuilder();

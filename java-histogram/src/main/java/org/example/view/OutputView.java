@@ -5,10 +5,6 @@ import org.example.domain.DataType;
 import javax.xml.crypto.Data;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-/**
- * 결과 출력을 담당하는 클래스
- */
 public class OutputView {
 
     public static void outputView(BufferedWriter writer, String message) throws IOException {

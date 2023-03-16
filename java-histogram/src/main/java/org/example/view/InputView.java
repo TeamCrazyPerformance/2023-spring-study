@@ -6,10 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * 입력을 담당하는 클래스
- */
 public class InputView {
     public static ArrayList<Integer> inputString(BufferedReader reader) throws IOException {
         String line = reader.readLine();
