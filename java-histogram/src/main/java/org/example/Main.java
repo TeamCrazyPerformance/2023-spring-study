@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.List;
-
 import org.example.domain.Histogram;
 import org.example.view.InputView;
 import org.example.view.OutputView;

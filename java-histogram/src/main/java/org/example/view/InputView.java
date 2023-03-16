@@ -33,7 +33,7 @@ public class InputView {
     System.out.println("각 데이터의 양을 입력해주세요.");
     histogram = new Histogram(Stream.generate(()-> {
       try {
-        return Integer.parseInt(br.readLine());
+        return br.readLine();
       } catch (IOException e) {
         throw new RuntimeException(e);
       }

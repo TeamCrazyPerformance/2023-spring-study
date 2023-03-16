@@ -13,8 +13,21 @@ public class Histogram {
     this.histogram = histogram;
   }
 
+  public double sum() {
+    double res = 0;
+    for (DataInfo dataInfo: histogram) {
+      res += dataInfo.getDataSize();
+    }
+    return res;
+  }
+
+  public double mean() {
+    return sum() / histogram.size();
+  }
+
   public void drawHistogram() {
     histogram.forEach((element) -> IntStream.rangeClosed(1, element.getDataSize()).forEach(i -> {
+      if(i == 1) System.out.print(element.toString() + ": ");
       System.out.print("=");
       if(i == element.getDataSize()) System.out.println();
     }));
