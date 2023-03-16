@@ -15,7 +15,7 @@ public class InputView {
         String line = reader.readLine();
         String[] arr = line.split(",");
         ArrayList<Integer> list = new ArrayList<Integer>();
-        Pattern pattern = Pattern.compile("\\d+");
+        Pattern pattern = Pattern.compile("-?\\d+");
         for (String s : arr) {
             Matcher matcher = pattern.matcher(s);
             if (matcher.find()) {
