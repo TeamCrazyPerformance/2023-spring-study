@@ -1,6 +1,6 @@
 package org.example.view;
+import org.example.domain.DataType;
 import org.example.domain.Histogram;
-import java.util.List;
 
 /**
  * 결과 출력을 담당하는 클래스
@@ -8,7 +8,7 @@ import java.util.List;
 public class OutputView {
     public static void histogramOutput(){
         System.out.println("히스토그램 결과입니다.");
-        for (int i=0; i < InputView.dataList.size();i++){
+        for (int i=0; i < Histogram.dataName().size();i++){
             System.out.print(Histogram.dataName().get(i));
             System.out.print("(TYPE_"+Histogram.dataType().get(i)+"): ");
             System.out.println("=".repeat(Histogram.dataAmount().get(i)));
