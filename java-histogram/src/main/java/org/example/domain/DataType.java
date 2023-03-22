@@ -6,6 +6,10 @@ public enum DataType {
 
     private final int typeCode;
 
+    public int getTypeCode() {
+        return typeCode;
+    }
+
     DataType(int typeCode) {
         this.typeCode = typeCode;
     }

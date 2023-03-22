@@ -7,6 +7,7 @@ import org.example.view.OutputView;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     private static final String INPUT_MESSAGE = "데이터의 개수를 입력해주세요.";
@@ -22,15 +23,20 @@ public class Main {
             int dataCount = inputview.inputInteger(reader, writer, INPUT_MESSAGE);
             outputview.outputView(writer, DATA_MESSAGE);
             writer.newLine();
-            ArrayList<Integer> amount = new ArrayList<>();
+            List<Integer> amount = new ArrayList<>();
             for (int i = 0; i < dataCount; i++) {
-                ArrayList<Integer> data = inputview.inputString(reader);
-                amount.add(data.get(1));
-                String histogram = hist.makeHistogram(data.get(1));
-                if (data.get(2) == 0)
-                    outputview.outputView(writer, data.get(0), DataType.TYPE_0.name(), histogram);
-                else
-                    outputview.outputView(writer, data.get(0), DataType.TYPE_1.name(), histogram);
+                String[] data = inputview.inputString(reader);
+                amount.add(Integer.parseInt(data[1]));
+                String histogram = hist.makeHistogram(Integer.parseInt(data[1]));
+
+                DataType[] types = DataType.values();
+                for (DataType type: types) {
+                    if(Integer.parseInt(data[2]) == type.getTypeCode())
+                    {
+                        outputview.outputView(writer, data, type.name(), histogram);
+                        break;
+                    }
+                }
             }
             outputview.outputView(writer, AVG_MESSAGE);
             outputview.outputView(writer, "평균: " + hist.getAvg(amount));

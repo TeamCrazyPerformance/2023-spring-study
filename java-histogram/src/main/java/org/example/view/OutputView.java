@@ -13,9 +13,8 @@ public class OutputView {
         writer.newLine();
         writer.flush();
     }
-    public static void outputView(BufferedWriter writer, int num, String dataType, String message) throws IOException {
-        writer.write("데이터" + num);
-        writer.write("(" + dataType + "):" + " ");
+    public static void outputView(BufferedWriter writer, String[] numbers, String dataType, String message) throws IOException {
+        writer.write(numbers[0] + "(" + dataType + "): ");
         writer.write(message);
         writer.newLine();
     }
