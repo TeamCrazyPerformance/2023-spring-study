@@ -16,7 +16,7 @@ public class OutputView {
     }
 
     public void printHistogram(List<String> histogramGraph) {
-        histogramGraph.forEach(histogramBar -> System.out.println(histogramBar));
+        histogramGraph.forEach(System.out::println);
         printBlankLine();
     }
 
