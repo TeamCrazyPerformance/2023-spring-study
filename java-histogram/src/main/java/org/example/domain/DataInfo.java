@@ -5,14 +5,14 @@ import static org.example.common.ErrorMessage.INVALID_DATA_SIZE;
 public class DataInfo {
 
     private final String dataName;
-    private final DataType dataType;
     private final int dataSize;
+    private final DataType dataType;
 
-    public DataInfo(String dataName, DataType dataType, int dataSize) {
+    public DataInfo(String dataName, int dataSize, DataType dataType) {
         validateDataSize(dataSize);
         this.dataName = dataName;
-        this.dataType = dataType;
         this.dataSize = dataSize;
+        this.dataType = dataType;
     }
 
     private void validateDataSize(int dataSize) {
@@ -21,8 +21,8 @@ public class DataInfo {
         }
     }
 
-    public static DataInfo from(String dataName, int typeCode, int dataSize) {
-        return new DataInfo(dataName, DataType.from(typeCode), dataSize);
+    public static DataInfo from(String dataName, int dataSize, int typeCode) {
+        return new DataInfo(dataName, dataSize, DataType.from(typeCode));
     }
 
     public String getDataName() {
