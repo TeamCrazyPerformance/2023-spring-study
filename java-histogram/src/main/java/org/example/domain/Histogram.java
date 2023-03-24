@@ -20,5 +20,4 @@ public class Histogram {
         avg = Math.round(avg * 10) / 10.0; // round to one decimal place
         return String.valueOf(avg);
     }
-
 }
