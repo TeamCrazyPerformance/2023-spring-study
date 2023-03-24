@@ -1,20 +1,23 @@
 package org.example.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * 히스토그램 도메인 클래스
- */
 public class Histogram {
-    public ArrayList<String> drawing(ArrayList<Integer> numbers){
-        ArrayList<String> histogram = new ArrayList<>();
-        for(int num: numbers) {
-            String eq = "";
-            for (int i = 0; i < num; i++) {
-                eq += "=";
-            }
-            histogram.add(eq);
+    public static String makeHistogram(int value) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < value; i++) {
+            sb.append("=");
         }
-        return histogram;
+        return sb.toString();
+    }
+    public static String getAvg(List<Integer> data)
+    {
+        int sum = 0;
+        for(int num: data)
+            sum += num;
+        double avg = (double)sum / data.size();
+        avg = Math.round(avg * 10) / 10.0; // round to one decimal place
+        return String.valueOf(avg);
     }
 }

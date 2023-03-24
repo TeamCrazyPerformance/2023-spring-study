@@ -1,30 +1,24 @@
 package org.example.view;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class InputView {
-    public int receiveN() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        if(n < 0)
-            throw new IllegalArgumentException("[ERROR] 데이터의 개수는 음수일 수 없습니다.");
-        return n;
+    public static String[] inputString(BufferedReader reader) throws IOException {
+        String line = reader.readLine();
+        String[] arr = line.split(",");
+        if(Integer.parseInt(arr[1]) < 0 || Integer.parseInt(arr[2]) < 0)
+            throw new IllegalArgumentException("[ERROR] 데이터의 양은 음수일 수 없습니다.");
+        return arr;
     }
-    public ArrayList<Integer> receiveA(int n) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for(int i = 0; i < n; i++){
-            int num = Integer.parseInt(br.readLine());
-            if(num < 0)
-                throw new IllegalArgumentException("[ERROR] 데이터의 양은 음수일 수 없습니다.");
-            else {
-                numbers.add(num);
-            }
-        }
-        return numbers;
+    public static int inputInteger(BufferedReader reader, BufferedWriter writer, String message) throws IOException {
+        OutputView.outputView(writer, message);
+        int dataCount = Integer.parseInt(reader.readLine());
+        if (dataCount < 0)
+            throw new IllegalArgumentException("[ERROR] 데이터의 개수는 음수일 수 없습니다.");
+        return dataCount;
     }
 }

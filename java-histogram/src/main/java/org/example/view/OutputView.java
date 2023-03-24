@@ -1,18 +1,21 @@
 package org.example.view;
 
+import org.example.domain.DataType;
+
+import javax.xml.crypto.Data;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-
-/**
- * 결과 출력을 담당하는 클래스
- */
 public class OutputView {
-    public void print(ArrayList<String> histogram) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        for(String str: histogram)
-            bw.write(str + "\n");
-        bw.flush();
+
+    public static void outputView(BufferedWriter writer, String message) throws IOException {
+        writer.write(message);
+        writer.write(" ");
+        writer.newLine();
+        writer.flush();
+    }
+    public static void outputView(BufferedWriter writer, String[] numbers, String dataType, String message) throws IOException {
+        writer.write(numbers[0] + "(" + dataType + "): ");
+        writer.write(message);
+        writer.newLine();
     }
 }
