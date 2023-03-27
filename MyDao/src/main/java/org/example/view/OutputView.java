@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.controller.UpdateResultDto;
+import org.example.controller.dto.UpdateResultDto;
 import org.example.domain.Person;
 
 import java.time.LocalDate;

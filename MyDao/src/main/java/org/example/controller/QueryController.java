@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.controller.dto.PersonCreateDto;
 import org.example.controller.dto.PersonUpdateDto;
+import org.example.controller.dto.UpdateResultDto;
 import org.example.dao.MyDao;
 import org.example.domain.Person;
 import org.example.view.InputView;
