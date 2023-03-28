@@ -14,50 +14,42 @@ public class MyListDao implements MyDao {
 
     @Override
     public Person save(Person person) {
+        // Check if the person already exists in the list
         for (Person p : peopleList) {
             if (p.getName().equals(person.getName())) {
-                return null;
+                throw new IllegalArgumentException("해당 이름이 이미 존재합니다.");
             }
         }
-        // 데이터베이스에 저장
+        // Add the person to the list
         peopleList.add(person);
+        // Return the saved person object
         return person;
     }
 
     @Override
-    public Person find(String name)  {
+    public Person find(String name) {
         // 이름으로 Person 검색
         for (Person person : peopleList) {
             if (person.getName().equals(name)) {
                 return person;
             }
         }
-        return null;
+        throw new IllegalArgumentException("[ERROR] 해당 이름이 존재하지 않습니다.");
     }
 
     @Override
-    public Person update(String name, LocalDate birthday, String introduction) {
-        // 이름으로 Person 검색
-        for (Person person : peopleList) {
-            if (person.getName().equals(name)) {
-                // Person 객체의 update 메소드 호출하여 수정
-                person.update(birthday, introduction);
-                return person;
-            }
-        }
-        // 이름으로 검색된 Person이 없을 경우
-        return null;
+    public Person update(Person updatePerson, Person updatedPerson) {
+        updatePerson.update(updatedPerson.getBirthDate(), updatedPerson.getIntro());
+        return updatedPerson;
     }
     @Override
-    public boolean delete(String name) {
-        for (Person person : peopleList) {
-            if (person.getName().equals(name)) {
-                // Person 객체의 update 메소드 호출하여 삭제
-                peopleList.remove(person);
-                return true;
-            }
+    public void delete(String name) {
+        Person person = find(name);
+        if(person != null)
+        {
+            peopleList.remove(person);
+            return;
         }
-        // 이름으로 검색된 Person이 없을 경우
-        return false;
+        throw new IllegalArgumentException("[ERROR] 해당 이름이 존재하지 않습니다.");
     }
 }

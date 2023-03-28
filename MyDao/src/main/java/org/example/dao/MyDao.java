@@ -7,6 +7,6 @@ import java.time.LocalDate;
 public interface MyDao {
     Person save(Person person);
     Person find(String name);
-    Person update(String name, LocalDate birthday, String introduction);
-    boolean delete(String name);
+    Person update(Person p1, Person p2);
+    void delete(String name);
 }

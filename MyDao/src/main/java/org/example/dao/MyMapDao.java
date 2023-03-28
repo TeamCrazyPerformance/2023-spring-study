@@ -33,19 +33,24 @@ public class MyMapDao implements MyDao {
     }
 
     @Override
-    public Person update(String name, LocalDate birthday, String introduction) {
-        // 이름으로 Person 검색
-        if (peopleData.containsKey(name)) {
-            Person person = peopleData.get(name);
-            person.update(birthday, introduction);
-            return person;
-        }
-        // 이름으로 검색된 Person이 없을 경우
+    public Person update(Person p1, Person p2) {
         return null;
     }
+
+    //    @Override
+//    public Person update(Person) {
+//        // 이름으로 Person 검색
+//        if (peopleData.containsKey(name)) {
+//            Person person = peopleData.get(name);
+//            person.update(birthday, introduction);
+//            return person;
+//        }
+//        // 이름으로 검색된 Person이 없을 경우
+//        return null;
+//    }
     @Override
-    public boolean delete(String name) {
-        Person removedPerson = peopleData.remove(name);
-        return removedPerson != null;
+    public void delete(String name) {
+//        Person removedPerson = peopleData.remove(name);
+//        return removedPerson != null;
     }
 }
