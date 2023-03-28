@@ -1,12 +1,20 @@
 package org.example;
+import org.example.dao.MyDao;
+import org.example.dao.MyListDao;
+import org.example.domain.InputView;
+import org.example.domain.OutputView;
+import org.example.domain.Person;
 
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        LocalDate localDate = LocalDate.of(1999, 4, 4);
-        LocalDate localDate1 = LocalDate.now().minusYears(localDate.getYear());
-        System.out.println("localDate1.getYear() = " + localDate1.getYear());
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        MyListDao myListDao = new MyListDao();
+        inputView.inputDataType();
+        inputView.inputDataBhvr();
+        outputView.outputSave(inputView.inputData());
+
     }
 }
