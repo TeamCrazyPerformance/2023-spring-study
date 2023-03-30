@@ -7,7 +7,7 @@ public class InputView {
     public Person inputData(){
         System.out.println("저장할 데이터를 입력해주세요.");
         String[] data = sc.next().split(",");
-        Person person = new Person(data[0], data[1],data[2]);
+        Person person = new Person(data[0], data[1], data[2]);
         return person;
     }
     public String inputDataType(){

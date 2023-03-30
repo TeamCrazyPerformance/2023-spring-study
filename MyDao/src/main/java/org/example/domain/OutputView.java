@@ -4,7 +4,7 @@ public class OutputView {
     private static final String result = "이름: [%s] 나이: [%s] 생일: [%s] \n자기소개: [%s]";
     private static final String updateResult = "이름: [%s] 나이: [%s] -> [%s] 생일: [%s] -> [%s] \n자기소개: [%s] -> [%s]";
     public void dataStatus(Person person){
-        System.out.println(String.format(result, person.getMe(), person.getAge(), person.getBirth(), person.getMe()));
+        System.out.println(String.format(result, person.getName(), person.getAge(), person.getBirth(), person.getMe()));
     }
     public void outputSave(Person person){
         System.out.println("데이터 저장 결과입니다.");

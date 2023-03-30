@@ -2,6 +2,7 @@ package org.example.domain;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Person {
     private String name;
@@ -31,7 +32,7 @@ public class Person {
         return intArray;
     }
     public String getAge(){
-        Integer[] Age = StringToInt(birth.split(","));
+        Integer[] Age = StringToInt(birth.split("\\."));
         LocalDate localDate = LocalDate.of(Age[0], Age[1], Age[2]);
         LocalDate localDate1 = LocalDate.now().minusYears(localDate.getYear());
         return Integer.toString(localDate1.getYear());
