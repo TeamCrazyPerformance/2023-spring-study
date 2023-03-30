@@ -19,8 +19,9 @@ public class MyListDao implements MyDao {
   }
 
   public Person find(String name) {
-    for(Person person : peopleList) {
-      if(person.getName().equals(name)) return person;
+    int idx = findIndex(name);
+    if(idx != -1) {
+      return peopleList.get(idx);
     }
     return null;
   }
@@ -38,8 +39,9 @@ public class MyListDao implements MyDao {
     int idx = findIndex(name);
     if(idx != -1) {
       peopleList.remove(idx);
+      return 1;
     }
-    return idx;
+    return -1;
   }
 
   /** code for search peopleList **/
