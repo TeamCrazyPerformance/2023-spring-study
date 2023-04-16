@@ -1,5 +1,4 @@
 package org.example.domain;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -24,14 +23,14 @@ public class Person {
         return me;
     }
 
-    public Integer[] StringToInt(String[] array){
+    private Integer[] stringToInt(String[] array){
         Integer[] intArray = Arrays.stream(array)
                 .map(Integer::parseInt)
                 .toArray(Integer[]::new);
         return intArray;
     }
     public String getAge(){
-        Integer[] Age = StringToInt(birth.split(","));
+        Integer[] Age = stringToInt(birth.split(","));
         LocalDate localDate = LocalDate.of(Age[0], Age[1], Age[2]);
         LocalDate localDate1 = LocalDate.now().minusYears(localDate.getYear());
         return Integer.toString(localDate1.getYear());
