@@ -23,7 +23,7 @@ public class MyMapDao implements MyDao {
     }
 
     @Override
-    public Person update(String name, String updateName) {
+    public Person update(String name, String[] updateName) {
         return null;
     }
 

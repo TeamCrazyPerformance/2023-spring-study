@@ -18,7 +18,9 @@ public class MyListDao implements MyDao {
     public Person save(Person dao) {
         Person person = new Person(dao.getName(), dao.getBirth(),dao.getMe());
         peopleList.add(person);
-        return null;
+        outputView.outputSave(person);
+        return person;
+
     }
 
     @Override
@@ -30,7 +32,14 @@ public class MyListDao implements MyDao {
     }
 
     @Override
-    public Person update(String name, String updateName) {
+    public Person update(String updateName,String[] updateDataArray) {
+        for (Person person : peopleList){
+            if (person.getName().equals(updateName)){
+                outputView.outputUpdate(person, updateDataArray[0], updateDataArray[1]);
+                person.setBirth(updateDataArray[0]);
+                person.setMe(updateDataArray[1]);
+            }
+        }
         return null;
     }
 

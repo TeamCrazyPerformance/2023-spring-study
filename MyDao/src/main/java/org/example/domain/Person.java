@@ -7,6 +7,17 @@ public class Person {
     private String name;
     private String birth;
     private String me;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public void setMe(String me) {
+        this.me = me;
+    }
     public Person(String name, String birth, String me){
         this.name = name;
         this.birth = birth;
@@ -31,14 +42,10 @@ public class Person {
         return intArray;
     }
     public String getAge(){
-<<<<<<< HEAD
-        Integer[] Age = stringToInt(birth.split(","));
-=======
-        Integer[] Age = StringToInt(birth.split("\\."));
->>>>>>> 8ede79768f450ca32b711f2d28e7b3d834b1c7b4
+        Integer[] Age = stringToInt(birth.split("\\."));
         LocalDate localDate = LocalDate.of(Age[0], Age[1], Age[2]);
-        LocalDate localDate1 = LocalDate.now().minusYears(localDate.getYear());
-        return Integer.toString(localDate1.getYear());
+        LocalDate birthData = LocalDate.now().minusYears(localDate.getYear());
+        return Integer.toString(birthData.getYear());
     }
 
 }

@@ -32,8 +32,27 @@ public class InputView {
         }
         return dataBhvr;
     }
-    public String inputName(){
+    public String inputUpdateName(){
+        String updateName = sc.nextLine();
+        return updateName;
+    }
+    public String[] inputUpdateData() {
+        String[] updateData = null;
+        try {
+            updateData = sc.nextLine().split(",");
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 데이터 형식입니다");
+        }
+        return updateData;
+    }
+    public String inputFindName(){
         System.out.println("조회할 이름을 입력해주세요.");
+        String name = sc.nextLine();
+        return name;
+    }
+    public String inputDeleteName(){
+        System.out.println("삭제할 이름을 입력해주세요.");
         String name = sc.nextLine();
         return name;
     }
