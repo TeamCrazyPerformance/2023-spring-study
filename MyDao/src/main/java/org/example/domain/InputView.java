@@ -8,8 +8,12 @@ public class InputView {
     public Person inputData(){
         System.out.println("저장할 데이터를 입력해주세요.");
         String[] data = sc.next().split(",");
-        Person person = new Person(data[0], data[1], data[2]);
-        return person;
+        try {
+            Person person = new Person(data[0], data[1], data[2]);
+            return person;
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
     public String inputDataType() {
         System.out.println("접근할 데이터베이스 이름을 입력해주세요. (LIST, MAP)");
@@ -36,15 +40,15 @@ public class InputView {
         String updateName = sc.nextLine();
         return updateName;
     }
-    public String[] inputUpdateData() {
+    public void inputUpdateData() {
         String[] updateData = null;
         try {
             updateData = sc.nextLine().split(",");
-
+            String updateDataBirth = updateData[0];
+            String updateDataMe = updateData[1];
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 데이터 형식입니다");
         }
-        return updateData;
     }
     public String inputFindName(){
         System.out.println("조회할 이름을 입력해주세요.");
@@ -58,8 +62,15 @@ public class InputView {
     }
     public int inputDecision(){
         System.out.println("계속하시겠습니까? (CONTINUE: 0, EXIT: 1)");
-        int dc = sc.nextInt();
-        return dc;
+        try {
+            int dc = sc.nextInt();
+            if (dc != 0 && dc != 1){
+                throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+            }
+            return dc;
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+        }
     }
 
 

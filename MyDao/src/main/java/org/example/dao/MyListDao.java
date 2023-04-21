@@ -32,20 +32,24 @@ public class MyListDao implements MyDao {
     }
 
     @Override
-    public Person update(String updateName,String[] updateDataArray) {
+    public Person update(String updateName, String updateDataBirth, String updateDataMe) {
         for (Person person : peopleList){
             if (person.getName().equals(updateName)){
-                outputView.outputUpdate(person, updateDataArray[0], updateDataArray[1]);
-                person.setBirth(updateDataArray[0]);
-                person.setMe(updateDataArray[1]);
+                person.setBirth(updateDataBirth);
+                person.setMe(updateDataBirth);
+                return person;
             }
         }
-        return null;
+        throw new IllegalArgumentException("[ERROR]");
     }
 
     @Override
     public void delete(String name) {
-        peopleList.remove(name);
+        try{
+            peopleList.remove(name);
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 
 
